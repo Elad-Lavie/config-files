@@ -1,0 +1,47 @@
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	br = for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+	df = diff
+
+	fe = fetch
+	cp = cherry-pick
+	ls = log --pretty=oneline --abbrev-commit --graph --decorate
+	la = log --format=format:'%C(bold blue)%h%C(reset) %C(bold cyan)%ai%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''        %C(white)%s%C(reset) %C(bold white)[%an]%C(reset)' --graph
+	lc = log --format=format:'%C(bold blue)%h%C(reset) %C(bold cyan)%ci%C(reset) %C(bold green)(%cr)%C(reset)%C(bold yellow)%d%C(reset)%n''        %C(white)%s%C(reset) %C(bold white)[%cn]%C(reset)' --graph
+	ll = log --format=format:'%C(bold blue)%h%C(reset) %C(bold cyan)%ai%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset) %C(white)%s%C(reset) %C(bold white)[%cn]%C(reset)' -M --graph --name-status
+	diff-staged = diff --staged -M
+	diff-last = diff --cached -M HEAD~
+	diff = diff -M
+	aliases = "!git config -l | grep alias | cut -c 7-" # Magic :)
+	serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
+	catch = !git daemon --reuseaddr --verbose --base-path=. --export-all --enable=receive-pack ./.git
+	text-files = grep -I --name-only ''
+	lost = fsck --unreachable --no-reflogs
+	merge = merge --no-ff
+	fetch = fetch --prune
+	ignore = update-index --skip-worktree
+	unignore = update-index --no-skip-worktree
+	graph = log --graph --all --oneline --decorate
+	ztatus = status
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+	sed = "!f() { git grep --files-with-matches \"$1\" | xargs sed -i -e \"s|$1|$2|\"; }; f"
+
+
+[diff]
+        tool = pycharm
+[difftool "pycharm"]
+        cmd = /usr/local/bin/charm diff "$LOCAL" "$REMOTE" && read
+[merge]
+        tool = pycharm
+[mergetool "pycharm"]
+        cmd = /usr/local/bin/charm merge "$LOCAL" "$REMOTE" "$BASE" "$MERGED" && read
+        keepBackup = false
+
+[cola]
+	spellcheck = false
+[user]
+	name = Elad Lavie
+	email = eladlavie@gmail.com
+

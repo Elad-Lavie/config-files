@@ -1,0 +1,8 @@
+alias gd="git difftool -d"
+alias DH="gd HEAD^"
+alias DIF="gd"
+alias gri="git rebase -i"
+alias amendments="git commit -a --amend --no-edit"
+alias gits="git st"
+alias gontinue="git rebase --continue"
+alias gg="git grep"
